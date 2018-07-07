@@ -1,6 +1,6 @@
 # _Face-Recognition-App-API_
 
-Built using __Node.js__ as an API endpoint for the main front-end app [__facerecognition-smart-brain.herokuapp.com__](https://facerecognition-smart-brain.herokuapp.com)
+Built using __Node.js__ as an API endpoint for the main [__Face-Recognition-App__](https://github.com/SivaramPg/Face-Recognition-App) containing the front-end [__facerecognition-smart-brain.herokuapp.com__](https://facerecognition-smart-brain.herokuapp.com) 
 
 It provides all the functionality that the front end is expecting on fetching data from the [__Clarifai API__](https://clarifai.com).
 
