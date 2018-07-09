@@ -6,7 +6,7 @@ const app = new Clarifai.App({
 
 const handleApiCall = (req, res) => {
 app.models
-  .predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
+  .predict("0c0ac362b03416da06ab3fa36fb58e3", req.body.input)
   .then(data => {
     res.json(data);
   })
