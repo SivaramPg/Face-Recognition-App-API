@@ -1,23 +1,23 @@
 // Importing npm packages
-const express = require("express");
-const bodyParser = require("body-parser");
-const bcrypt = require("bcrypt-nodejs");
-const cors = require("cors");
-const knex = require("knex");
+const express = require('express');
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt-nodejs');
+const cors = require('cors');
+const knex = require('knex');
 
 // importing modules from controllers folder
-const register = require("./controllers/register");
-const signin = require("./controllers/signin");
-const profile = require("./controllers/profile");
-const image = require("./controllers/image");
+const register = require('./controllers/register');
+const signin = require('./controllers/signin');
+const profile = require('./controllers/profile');
+const image = require('./controllers/image');
 
 // Creating a variable for knex package for passing authentication
 const db = knex({
-  client: "pg",
+  client: 'pg',
   connection: {
     connectionString: process.env.DATABASE_URL,
-    ssl: true
-  }
+    ssl: true,
+  },
 });
 
 const app = express();
@@ -26,32 +26,32 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Root endpoint
-app.get("/", (req, res) => {
-  res.send("It is working");
+app.get('/', (req, res) => {
+  res.send('It is working');
 });
 
 // signin endpoint
-app.post("/signin", (req, res) => {
+app.post('/signin', (req, res) => {
   signin.handleSignin(req, res, db, bcrypt);
 });
 
 // register endpoint
-app.post("/register", (req, res) => {
+app.post('/register', (req, res) => {
   register.handleRegister(req, res, db, bcrypt);
 });
 
 // profile endpoint
-app.get("/profile/:id", (req, res) => {
+app.get('/profile/:id', (req, res) => {
   profile.handleProfileGet(req, res, db);
 });
 
 // image endpoint for fetching the image from the url
-app.put("/image", (req, res) => {
+app.put('/image', (req, res) => {
   image.handleImage(req, res, db);
 });
 
 // imageurl endpoint for receiving data from clarifai api
-app.post("/imageurl", (req, res) => {
+app.post('/imageurl', (req, res) => {
   image.handleApiCall(req, res);
 });
 
